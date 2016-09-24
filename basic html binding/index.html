@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app>
 <head>
   <meta charset="UTF-8">
   <title>Learn Angular</title>
@@ -7,6 +7,11 @@
   <link rel="stylesheet" type="text/css" href="./main.css" />
 </head>
 <body>
+  <div class="container" ng-init="title='Warcraft'; great=true;">
+    <h1>{{ title }} is Great: {{ great }}</h1>
+    <input type="text" class="form-control" ng-model="title" />
+    <input type="checkbox" class="form-control" ng-model="great"/>
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 </body>
 </html>

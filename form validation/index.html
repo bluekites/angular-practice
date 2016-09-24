@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" ng-app="minmax">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn Angular</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./main.css" />
+</head>
+<body>
+  <div class="container" ng-controller="minmaxCtrl">
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" ng-model="formModel.name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" ng-model="formModel.email" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" ng-model="formModel.password" />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" ng-click="onSubmit()">Register</button>
+      </div>
+      <pre>{{ formModel | json }}</pre> <!-- the | is a filter that passes the variable to a function to filter out the result -->
+    </form>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
