@@ -27,8 +27,7 @@ app.controller('mainCtrl', ['$scope', function($scope){
   $scope.order = "name";
   $scope.selectedPerson = null;
   $scope.selectedIndex = null;
-  $scope.selectPerson = function(person, index) {
-    $scope.selectedIndex = index;
+  $scope.selectPerson = function(person) {
     $scope.selectedPerson = person;
   };
 }]);
