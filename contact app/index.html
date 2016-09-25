@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Learn Angular</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./main.css" />
+</head>
+<body>
+  <div class="container" ng-controller="mainCtrl">
+    
+    <div class="row">
+      <form class="form-inline well well-sm">
+        <span class="glyphicon glyphicon-search"></span>
+        <div class="form-group">
+          <input type="text"
+                class="form-control"
+                id="name"
+                ng-model="search.$"
+                placeholder="search any property" 
+          />
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <table class="table table-bordered">
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Birthday</th>
+          </tr>
+          <tr ng-repeat="person in persons | filter: search" 
+          ng-style="{'background': $index == selectedIndex ? 'lightblue' : ''}" 
+          ng-click="selectPerson(person, $index)">
+            <td>{{ $index }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.email }}</td>
+            <td>{{ person.birthdate | date: "longDate" }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Details</div>
+          <div class="panel-body">
+             Hobby: {{ selectedPerson.hobby || 'none selected' }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <pre>{{ search }}</pre>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
