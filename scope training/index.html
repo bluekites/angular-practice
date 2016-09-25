@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Scope</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+  
+  
+  <div class="container">
+    <input class="form-control"
+             type="text"
+             ng-model="info"
+    />
+    <h3>Root {{ info }}</h3>
+    <div class="container" ng-controller="parentCtrl">
+      <input class="form-control"
+             type="text"
+             ng-model="info"
+      />
+      <h3>Parent: {{ info }}</h3>
+        <div class="container" ng-controller="childCtrl">
+        <input class="form-control"
+           type="text"
+           ng-model="info"
+        />
+        <button class="btn btn-primary" ng-click="reset()">Reset</button>
+        <h3>child: {{ info }}</h3>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
