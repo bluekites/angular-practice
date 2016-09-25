@@ -19,6 +19,12 @@
                 ng-model="search.$"
                 placeholder="search any property" 
           />
+          <select ng-model="order">
+            <option value="name">Name ASC</option>
+            <option value="-name">Name DESC</option>
+            <option value="email">Email ASC</option>
+            <option value="-email">Email DESC</option>
+          </select>
         </div>
       </form>
     </div>
@@ -31,7 +37,7 @@
             <th>Email</th>
             <th>Birthday</th>
           </tr>
-          <tr ng-repeat="person in persons | filter: search" 
+          <tr ng-repeat="person in persons | filter: search | orderBy: order" 
           ng-style="{'background': $index == selectedIndex ? 'lightblue' : ''}" 
           ng-click="selectPerson(person, $index)">
             <td>{{ $index }}</td>

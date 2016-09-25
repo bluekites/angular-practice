@@ -11,19 +11,20 @@ app.controller('mainCtrl', ['$scope', function($scope){
     },
     {
       name: 'Bean',
-      email: 'dean@dean.com',
+      email: 'bean@bean.com',
       birthdate: '09/06/1983',
       hobby: 'Rock climbing'
     },
     {
       name: 'Lean',
-      email: 'dean@dean.com',
+      email: 'lean@lean.com',
       birthdate: '09/06/1983',
       hobby: 'Calisthenics'
     }
   ];
   
   $scope.search = {};
+  $scope.order = "name";
   $scope.selectedPerson = null;
   $scope.selectedIndex = null;
   $scope.selectPerson = function(person, index) {
