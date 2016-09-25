@@ -8,23 +8,34 @@
 </head>
 <body>
   <div class="container" ng-controller="minmaxCtrl">
-    <form>
+    <form ng-submit="onSubmit(theForm.$valid)" novalidate="novalidate" name="theForm"> <!-- novalidate-"novalidate" will stop html5 validation from triggering -->
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" ng-model="formModel.name" />
       </div>
-      <div class="form-group">
+      <div class="form-group" ng-class="{
+      'has-error': !theForm.email.$valid && (!theForm.email.$pristine || theForm.$submitted),
+      'has-success': theForm.email.$valid && (!theForm.email.$pristine || theForm.$submitted)
+      }">
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" ng-model="formModel.email" />
+        <input type="email" class="form-control" id="email" ng-model="formModel.email" name="email" required/>
+        
+        <p class="help-block" ng-show="theForm.email.$error.required && (!theForm.email.$pristine || theForm.$submitted)">This field is required</p>
+        <p class="help-block" ng-show="theForm.email.$error.email && (!theForm.email.$pristine || theForm.$submitted)">Please enter a valid email</p>
+        <pre>Field valid? {{ theForm.email.$error | json }}</pre> <!-- this right here lets us see the property that makes the emails valid and invalid -->
+        <pre>Field valid? {{ theForm.email.$valid }}</pre>
+        <pre>Form pristine? {{ theForm.email.$pristine }}</pre>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" ng-model="formModel.password" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" ng-click="onSubmit()">Register</button>
+        <button class="btn btn-primary" type="submit">Register</button>
       </div>
       <pre>{{ formModel | json }}</pre> <!-- the | is a filter that passes the variable to a function to filter out the result -->
+      <pre>{{ theForm | json}}</pre>
+      <pre>{{ theForm | json}}</pre>
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
